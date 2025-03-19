@@ -26,11 +26,11 @@ function void fn06e778()
 	// and will only play when UOZO/OZO is active.
 	//@ You may use this script in your own mod, but credit for it would be appreciated.
 #if STANDALONE
-	bool OZO_ACTIVE = Mods.isModActive("Original zone order")						// Legobouwer's OZO
-	bool UOZO_ACTIVE = Mods.isModActive("useott-s-original-zone-order")				// Useott's OZO (UOZO)
+	bool OZO_ACTIVE = Mods.isModActive("Original zone order")				// Legobouwer's OZO
+	bool UOZO_ACTIVE = Mods.isModActive("useott-s-original-zone-order")			// Useott's OZO (UOZO)
 	bool CNZTOFBZ = (OZO_ACTIVE || UOZO_ACTIVE)
 	if (level.results_done) && (CNZTOFBZ && global.zone_act.apparent == 0x0301)		// Checks for the Transition
-		playMusic(MUSIC_MINIBOSS_2)													// Plays the Miniboss Track
+		playMusic(MUSIC_MINIBOSS_2)							// Plays the Miniboss Track
 #endif
 }
 
