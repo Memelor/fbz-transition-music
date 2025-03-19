@@ -1,0 +1,16 @@
+{
+	"Metadata":
+	{
+		"Name": "Flying Battery Zone Transition Music",
+		"UniqueID": "flying-battery-zone-transition-music",
+		"Author": "Lor",
+		"Description": "This mod adds music to the Transition between Mushroom Hill Zone and Flying Battery Zone! Alternatively, it adds music to the Carnival Night Zone Transition to Flying Battery Zone if Useott's/Legobouwer's Original Zone Order is active.",
+		"ModVersion": "v1.0",
+		"GameVersion": "24.02.02.0"
+	},
+	
+	"OtherMods":
+	{
+		"useott-s-original-zone-order": { "DisplayName": "Useott's Original Zone Order", "IsRequired": "0", "Priority": "Lower" },
+	},
+}

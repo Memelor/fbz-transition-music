@@ -1,0 +1,46 @@
+/*
+	This script file is part of the Sonic 3 A.I.R. script software distribution.
+	Copyright (C) 2017-2025 by Eukaryot
+
+	Published under the GNU GPLv3 open source software license, see license.txt
+	or https://www.gnu.org/licenses/gpl-3.0.en.html
+*/
+
+//# address-hook(0x054e9c) end(0x054f62)
+function void fn054e9c()
+{
+	base.fn054e9c()
+	// This is the function that is called after finishing MHZ2, which starts the MHZ2 Transition 
+	// Cutscene to FBZ1. This will play by default if UOZO/OZO isn't active.
+	//@ You may use this script in your own mod, but credit for it would be appreciated.
+#if STANDALONE
+	if (level.results_done)
+		playMusic(MUSIC_MINIBOSS_2)
+#endif
+}
+//# address-hook(0x06e778) end(0x06e7b4)
+function void fn06e778() 
+{
+	base.fn06e778()
+	// This is the function that pans the camera to the right in CNZ after the Level Results,
+	// and will only play when UOZO/OZO is active.
+	//@ You may use this script in your own mod, but credit for it would be appreciated.
+#if STANDALONE
+	bool OZO_ACTIVE = Mods.isModActive("Original zone order")						// Legobouwer's OZO
+	bool UOZO_ACTIVE = Mods.isModActive("useott-s-original-zone-order")				// Useott's OZO (UOZO)
+	bool CNZTOFBZ = (OZO_ACTIVE || UOZO_ACTIVE)
+	if (level.results_done) && (CNZTOFBZ && global.zone_act.apparent == 0x0301)		// Checks for the Transition
+		playMusic(MUSIC_MINIBOSS_2)													// Plays the Miniboss Track
+#endif
+}
+
+/*
+// If you wanna add your own compatibility without using the scripts above, use this one instead!
+function u64 Standalone.getModdedSoundKey(u64 soundKey, u8 sfxId, u8 soundRegType)
+{
+	bool zone_act = global.zone_act.apparent
+	if (sfxId == MUSIC_MINIBOSS_2) && (zone_act == 0x0301 || zone_act == 0x0701)
+		return 0x30 // This track is replacable, and uses Big Arms' Track as an example.
+	return base.Standalone.getModdedSoundKey(soundKey, sfxId, soundRegType)
+}
+*/
